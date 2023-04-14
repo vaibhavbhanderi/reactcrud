@@ -5,25 +5,13 @@ import { useState } from "react";
 
 function App() {
   const handleInputChange = (event) => {
-    const { name, value, type, checked } = event.target;
-    const label = event.target.labels[0].textContent;
-    const isChecked = event.target.checked;
-    if (type === "checkbox") {
-      setFormData((prevData) => ({
-        
-        ...prevData,
-        checkedItems: {
-          
-          ...prevData.checkedItems,
-          [name]: checked,
-        },
-      }));
-    } else {    
+    const { name, value } = event.target;
+     
       setFormData((prevData) => ({
         ...prevData,
         [name]: value,
       }));
-    }
+    
   };
   
   const [formData, setFormData] = useState({
@@ -38,15 +26,9 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const checkedLabels = [];
-    Object.entries(formData.checkedItems).forEach(([key, value]) => {
-      if (value) {
-        const label = document.querySelector(`label[for=${key}]`)?.textContent;
-        checkedLabels.push(label);
-      }
-    });
-    console.log(checkedLabels); // 
-    console.log(formData); // Use the form data for further processing
+    
+    console.log("Dasd"); 
+    console.log(formData); 
   };
 
   return (
